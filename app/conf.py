@@ -1,6 +1,9 @@
 # Конфигурация OPC UA сервера
+import os
+
+
 OPC_CONFIG = {
-    'endpoint': 'opc.tcp://127.0.0.1:54000/server/',
+    'endpoint': 'opc.tcp://0.0.0.0:54000/server/',
     'server_name': 'Simple Python Modbus OPC UA Server',
     'uri': 'http://example.com/myserver',  # Пространство имён
     'namespace': 'http://example.com/myserver',  # Альтернативное название
@@ -35,8 +38,8 @@ DEVICES = {
                 'word_order': 'big',      # порядок слов для float
             },
         },
-        'host': '127.0.0.1',
-        'port': 4001,
+        'host': os.getenv('MODBUS_HOST01', 'localhost'), # Читаем хост из переменной окружения
+        'port': int(os.getenv('MODBUS_PORT01', 4002)),
         'framer': 'rtu',  # rtu, socket, etc.
         'retries': 2,
         'device_id': 1,  # ID устройства Modbus (slave id)
@@ -70,8 +73,8 @@ DEVICES = {
                 'word_order': 'big',      # порядок слов для float
             },
         },
-        'host': '127.0.0.1',
-        'port': 4002,
+        'host': os.getenv('MODBUS_HOST02', 'localhost'), # Читаем хост из переменной окружения
+        'port': int(os.getenv('MODBUS_PORT02', 4002)),
         'framer': 'rtu',  # rtu, socket, etc.
         'retries': 2,
         'device_id': 1,  # ID устройства Modbus (slave id)
@@ -86,9 +89,11 @@ DEVICES = {
 #       'address_type': 'holding_register' | 'input_register' | 'coil' | 'discrete_input',
 #       'address': int,  # Адрес в Modbus
 #       'count': int,    # Количество регистров для чтения (для регистров)
-#       'data_type': 'float' | 'int16' | 'uint16' | 'int32' | 'uint32' | 'bool',
 #       'scale': float,  # Множитель для преобразования значения (опционально)
-#       'offset': int,   # Смещение для преобразования значения (опционально)
+#       'offset': int,   # Смещение для преобразования значения (опционально)  
+#       'writable': bool,    # Можно ли записывать значение (опционально) 
+#       'data_type': 'float' | 'int16' | 'uint16' | 'int32' | 'uint32' | 'bool',      
 #       'description': str,  # Описание тега (опционально)
-#       'writable': bool,    # Можно ли записывать значение (опционально)
+#
+#
 #   }

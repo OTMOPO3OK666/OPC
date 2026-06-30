@@ -4,10 +4,10 @@ import asyncio
 from opcua import Server, ua
 from datetime import datetime
 
-from ModbusDevice import ModbusDevice
+from app.modbus_device import ModbusDevice
 
 from typing import Dict
-from conf import OPC_CONFIG, DEVICES
+from app.conf import OPC_CONFIG, DEVICES
 
 
 logger = logging.getLogger(__name__)

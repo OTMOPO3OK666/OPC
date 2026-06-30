@@ -4,7 +4,7 @@ import logging
 import signal
 import sys
 
-from OPCServer import OPCServer
+from app.opc_server import OPCServer
 
 
 # Настройка логирования
