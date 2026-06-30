@@ -27,7 +27,7 @@
 
 1.  Клонируйте репозиторий:
     ```bash
-    git clone https://github.com/yourusername/modbus-opcua-server.git
+    git clone https://github.com/OTMOPO3OK666/OPC.git
     cd OPC
 
 2.  Установите зависимости:
